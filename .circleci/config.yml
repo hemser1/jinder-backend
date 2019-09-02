@@ -10,11 +10,15 @@ jobs:
       - image: circleci/ruby:2.6.3-node-browsers
         environment:
           BUNDLER_VERSION: 2.0.2
+          PG_HOST: localhost
+          PG_USER: ubuntu
+          RAILS_ENV: test
+          RACK_ENV: test
 
-      - image: circleci/postgres:9.6.2-alpine
+      - image: circleci/postgres:9.6-jessie
         environment:
-          POSTGRES_USER: root
-          POSTGRES_DB: circle-test_tes
+          POSTGRES_USER: ubuntu
+          POSTGRES_DB: db_name
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
