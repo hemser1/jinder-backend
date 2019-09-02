@@ -51,8 +51,13 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run:
+          name: Set up DB
+          command: |
+            bundle exec rake db:create db:schema:load --trace
+            bundle exec rake db:migrate
+        environment:
+          DATABASE_URL: "postgres://ubuntu@localhost:5432/db_name"
 
       # run tests!
       - run:
