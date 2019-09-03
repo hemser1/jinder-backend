@@ -17,7 +17,6 @@ class Api::SessionsController < ApplicationController
     else
       head(:unauthorized)
     end
-
   end
 
 end

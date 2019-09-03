@@ -1,4 +1,5 @@
-class API::UsersController < ApplicationController
+class UsersController < ApplicationController
+
   def create
     @user = User.new(user_params)
 
@@ -10,7 +11,12 @@ class API::UsersController < ApplicationController
   end
 
   def destory
-
+    @user = User.where(id: params[:id]).first
+    if @user.destroy
+      head(:ok)
+    else
+      head(:unprocessable_entity)
+    end
   end
 
   private
