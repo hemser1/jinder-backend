@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+
   def create
-    @user = User.new(user_params)
+        @user = User.new(user_params)
 
     if @user.save
       render :create
@@ -10,7 +11,12 @@ class UsersController < ApplicationController
   end
 
   def destory
-
+    @user = User.where(id: params[:id]).first
+    if @user.destroy
+      head(:ok)
+    else
+      head(:unprocessable_entity)
+    end
   end
 
   private
