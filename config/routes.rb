@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   namespace :api, defaults: { format: :json } do
-    resources :sessions, only: [:create, :destroy]
+    resource :sessions, only: [:create, :destroy]
     resources :profiles
 
   end
