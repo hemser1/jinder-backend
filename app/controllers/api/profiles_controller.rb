@@ -1,4 +1,4 @@
-class ProfileController < ApplicationController
+class Api::ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
 
@@ -12,6 +12,6 @@ class ProfileController < ApplicationController
   private
 
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :user_id, :skills)
+      params.require(:profile).permit(:first_name, :last_name, :user_id, :industry, :skills)
     end
 end
