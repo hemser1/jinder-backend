@@ -9,6 +9,12 @@ class Api::ProfilesController < ApplicationController
     end
   end
 
+  def index
+    @profiles = Profile.all
+
+    render json: @profiles
+  end
+
   private
 
     def profile_params
