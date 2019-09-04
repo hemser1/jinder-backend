@@ -1,11 +1,9 @@
-class UsersController < ApplicationController
+class UsersController < Devise::RegistrationsController
 
   def create
     @user = User.new(user_params)
 
     if @user.save
-      p "============"
-      p "user is saving"
       render json: @user.as_json(only: [:email, :authentication_token]), status: :created
     else
       head(:unprocessable_entity)
