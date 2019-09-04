@@ -4,13 +4,15 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      render :create
+      p "============"
+      p "user is saving"
+      render json: @user.as_json(only: [:email, :authentication_token]), status: :created
     else
       head(:unprocessable_entity)
     end
   end
 
-  def destory
+  def destroy
     @user = User.where(id: params[:id]).first
     if @user.destroy
       head(:ok)
