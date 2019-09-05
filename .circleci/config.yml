@@ -57,9 +57,7 @@ jobs:
       # Database setup
       - run:
           name: Set up DB
-          command: |
-            bundle exec rake db:create db:schema:load --trace
-            bundle exec rake db:migrate RAILS_ENV=test
+          command: bundle exec rake db:create db:schema:load RAILS_ENV=test
           environment:
             DATABASE_URL: "postgres://ubuntu@localhost:5432/db_name"
 
