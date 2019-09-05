@@ -17,10 +17,10 @@ jobs:
 
       - image: circleci/postgres:10.4-alpine-ram
         environment:
-          PG_USER: ubuntu
-          PG_DB: ubuntu
-          PG_TEST_DB: ubuntu_test
-          PG_PORT: 5432
+          POSTGRES_USER: ubuntu
+          POSTGRES_DB: ubuntu
+          POSTGRES_TEST_DB: ubuntu_test
+          POSTGRES_PORT: 5432
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -65,14 +65,15 @@ jobs:
             DATABASE_URL: "postgres://ubuntu@localhost:5432/ubuntu_test"
 
       # run tests!
-      - run:
-          name: run tests
-          command: |
-            bundle exec rspec \
-              --format progress \
-              --out /tmp/test-results/rspec.xml \
-              --format progress \
-              $TEST_FILES
+      # - run:
+      #     name: run tests
+      #     command: |
+      #
+      #       bundle exec rspec \
+      #         --format progress \
+      #         --out /tmp/test-results/rspec.xml \
+      #         --format progress \
+      #         $TEST_FILES
 
       # collect reports
       - store_test_results:
