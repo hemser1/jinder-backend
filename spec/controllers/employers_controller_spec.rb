@@ -23,8 +23,8 @@ RSpec.describe EmployersController, type: :request do
   it 'returns json with email' do
     expect(JSON.parse(response.body)['email']). to eq ('david@smith.com')
   end
-  # it 'deletes employer' do
-  #   delete '/employers', params: { :id => 1 }
-  #   expect(response).to have_http_status(:ok)
-  # end
+  it 'deletes employer' do
+    delete '/employers'
+    expect(response).to have_http_status(:redirect)
+  end
 end

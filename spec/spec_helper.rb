@@ -14,6 +14,10 @@ ENV['RAILS_ENV'] = 'test'
 # it.
 require 'simplecov'
 require 'simplecov-console'
+require 'json_spec'
+RSpec.configure do |config|
+  config.include JsonSpec::Helpers
+end
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
                                                                  SimpleCov::Formatter::Console
