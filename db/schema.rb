@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 20190905103517) do
     t.index ["reset_password_token"], name: "index_employers_on_reset_password_token", unique: true
   end
 
+  create_table "images", force: :cascade do |t|
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
