@@ -17,10 +17,18 @@ class Api::ProfilesController < ApplicationController
   private
 
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :user_id, :industry, :skills, images_attributes: %I[
-          id
-          photo
-          _destroy
-        ])
+      params.require(:profile).permit(
+        # [
+          :first_name,
+          :last_name,
+          :user_id,
+          :industry,
+          :skills,
+          images_attributes: %I[
+            id
+            photo
+          ]
+        # ]
+      )
     end
 end
