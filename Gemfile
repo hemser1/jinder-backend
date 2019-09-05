@@ -17,6 +17,7 @@ gem 'rspec'
 gem 'hpricot'
 gem 'ruby_parser'
 gem 'simple_token_authentication', '~> 1.0'
+gem 'paperclip'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
