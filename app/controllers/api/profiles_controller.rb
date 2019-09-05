@@ -23,11 +23,11 @@ class Api::ProfilesController < ApplicationController
           :last_name,
           :user_id,
           :industry,
-          :skills
-          # images_attributes: %I[
-          #   id
-          #   photo
-          # ]
+          :skills,
+          images_attributes: %I[
+            id
+            photo
+          ]
         # ]
       )
     end
