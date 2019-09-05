@@ -4,7 +4,6 @@ class EmployersController < Devise::RegistrationsController
     @employer = Employer.new(employers_params)
 
     if @employer.save!
-      p "LOOK HERE MOTEEEE"
       render json: @employer.as_json(only: [:email, :authentication_token, :id]), status: :created
     else
       head(:unprocessable_entity)
