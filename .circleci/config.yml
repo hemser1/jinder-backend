@@ -17,10 +17,10 @@ jobs:
 
       - image: circleci/postgres:10.4-alpine-ram
         environment:
-          POSTGRES_USER: ubuntu
-          POSTGRES_DB: ubuntu
-          POSTGRES_TEST_DB: ubuntu_test
-          POSTGRES_PORT: 5432
+          PG_USER: ubuntu
+          PG_DB: ubuntu
+          PG_TEST_DB: ubuntu_test
+          PG_PORT: 5432
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
