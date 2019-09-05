@@ -15,7 +15,7 @@
 
 **_Build Something Cool :sunglasses:_**
 
-**_[PLEASE VISIT OUR FRONTEND README FOR MORE INFORMATION ABOUT OUR PROCESS, DAY-TO-DAY ACTIVITIES AND PROJECT GOCERNANCE](https://github.com/hjdr/jinder-frontend)_** :trophy:
+**_[PLEASE VISIT OUR FRONTEND README FOR MORE INFORMATION ABOUT OUR PROCESS, DAY-TO-DAY ACTIVITIES AND PROJECT GOVERNANCE](https://github.com/hjdr/jinder-frontend)_** :trophy:
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
