@@ -15,10 +15,9 @@ jobs:
           RAILS_ENV: test
           RACK_ENV: test
 
-      - image: circleci/postgres:9.6.2-alpine
+      - image: circleci/postgres:10.4-alpine-ram
         environment:
           POSTGRES_USER: ubuntu
-          POSTGRES_DB: db_name
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -48,6 +47,7 @@ jobs:
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - run: sudo apt install -y postgresql-client
+      - run: sudo apt-get install postgresql-client-10.3 || true
 
       - save_cache:
           paths:
