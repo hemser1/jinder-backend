@@ -10,7 +10,7 @@ jobs:
       - image: circleci/ruby:2.6.3-node-browsers
         environment:
           BUNDLER_VERSION: 2.0.2
-          PG_HOST: localhost
+          PG_HOST: 127.0.0.1
           PG_USER: ubuntu
           RAILS_ENV: test
           RACK_ENV: test
