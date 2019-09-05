@@ -18,6 +18,9 @@ jobs:
       - image: circleci/postgres:10.4-alpine-ram
         environment:
           POSTGRES_USER: ubuntu
+          POSTGRES_DB: ubuntu
+          POSTGRES_TEST_DB: ubuntu_test
+          POSTGRES_PORT: 5432
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -59,7 +62,7 @@ jobs:
           name: Set up DB
           command: bundle exec rake db:create db:schema:load RAILS_ENV=test
           environment:
-            DATABASE_URL: "postgres://ubuntu@localhost:5432/db_name"
+            DATABASE_URL: "postgres://ubuntu@localhost:5432/ubuntu_test"
 
       # run tests!
       - run:
