@@ -12,13 +12,13 @@ class Profile < ApplicationRecord
       user_id: user_id,
       industry: industry,
       skills: skills,
-        image_photos: images.map do |x|
-          {
-            url: x.photo.url.absolute_url,
-            name: x.photo_file_name,
-            id: x.id
-          }
-        end
+      image_photos: images.map do |x|
+        {
+          url: x.photo.url.absolute_url,
+          name: x.photo_file_name,
+          id: x.id
+        }
+      end
     }
   end
 end
