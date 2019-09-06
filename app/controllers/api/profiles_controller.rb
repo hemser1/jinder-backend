@@ -9,6 +9,11 @@ class Api::ProfilesController < ApplicationController
     end
   end
 
+  def show
+    @profile = Profile.where(user_id: params[:id])
+    render json: @profile
+  end
+
   def index
     @profiles = Profile.all
     render json: @profiles

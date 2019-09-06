@@ -10,6 +10,32 @@ class EmployersController < Devise::RegistrationsController
     end
   end
 
+  def update_matches
+    @employer = Employer.find_by_sql("
+      SELECT employers.id, employers.accepted_profiles, employers.rejected_profiles
+      FROM employers
+      WHERE id = #{params[:id]}")
+      current_accepted_profiles = @employer[0].accepted_profiles
+      current_rejected_profiles = @employer[0].rejected_profiles
+      updated_accepted_profiles = current_accepted_profiles.push(params[:accepted_profiles])
+      updated_rejected_profiles = current_rejected_profiles.push(params[:rejected_profiles])
+
+    Employer.update(
+      params[:id],
+      :accepted_profiles => updated_accepted_profiles,
+      :rejected_profiles => updated_rejected_profiles)
+      head(:created)
+  end
+
+  def show_matches
+    @employers = Employer.find_by_sql("
+      select *, e.id
+      from users, (select unnest(employers.accepted_profiles)
+      as user_id , employers.id from employers) e
+      where users.id=e.user_id::INTEGER")
+        render json: @employers.as_json
+  end
+
   def destroy
     @employer = Employer.where(id: params[:id]).first
     if @employer.destroy

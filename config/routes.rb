@@ -6,5 +6,21 @@ Rails.application.routes.draw do
     resources :profiles
 
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_scope :user do
+    resources :users do
+      collection do
+        get 'show_matches'
+        patch 'update_matches'
+      end
+    end
+  end
+  devise_scope :employer do
+    resources :employers do
+      collection do
+        get 'show_matches'
+        patch 'update_matches'
+      end
+    end
+  end
 end
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -3,6 +3,11 @@ class Employer < ApplicationRecord
   has_many :employer_images, dependent: :destroy
   accepts_nested_attributes_for :employer_images, allow_destroy: true
 
+  def as_json(_opts = {})
+    {
+      email: email,
+    }
+  end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
