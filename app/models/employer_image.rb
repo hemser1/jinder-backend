@@ -1,0 +1,2 @@
+class EmployerImage < ApplicationRecord
+end

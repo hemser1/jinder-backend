@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :employer_image do
+    employer_id { 1 }
+  end
+
 
 factory :employer, class: Employer do
     first_name { Faker::Lorem.first_name }

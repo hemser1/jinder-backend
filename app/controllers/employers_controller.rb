@@ -22,6 +22,17 @@ class EmployersController < Devise::RegistrationsController
   private
 
   def employers_params
-    params.require(:employer).permit(:first_name, :last_name, :email, :password, :bio, :company_url)
+    params.require(:employer).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :bio,
+      :company_url,
+      employer_images_attributes: %I[
+        id
+        photo
+      ]
+    )
   end
 end
