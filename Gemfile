@@ -10,6 +10,7 @@ ruby '2.6.3'
 gem 'rails', '~> 5.1.7'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 gem 'devise'
@@ -19,6 +20,8 @@ gem 'ruby_parser'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'paperclip'
 gem 'mime-types'
+gem 'poltergeist'
+gem 'json_spec', '~> 1.1', '>= 1.1.5'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
@@ -36,6 +39,12 @@ gem 'rack-cors'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.8'
+  gem 'faker'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+  gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
 end
 
 group :development do
