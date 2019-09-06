@@ -14,3 +14,7 @@
 !/tmp/.keep
 
 .byebug_history
+
+# Ignore images uploaded to local deployment database
+
+public/system/images
