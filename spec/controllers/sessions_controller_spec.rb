@@ -24,14 +24,14 @@ RSpec.describe Api::SessionsController, type: :request do
   #     expect(response).to have_http_status(:ok)
   #   end
   # end
-  # describe 'DELETE #destroy' do
-  #   it 'destroys sessions!' do
-  #   auth = JSON.parse(response.body)['authentication_token']
-  #   email = 'david@smith.com'
-  #     delete '/api/sessions', headers: {:'X-User-Email' => email, :'X-User-Token' => auth}
-  #       expect(response).to have_http_status(:ok)
-  #   end
-  # end
+  describe 'DELETE #destroy' do
+    it 'destroys sessions!' do
+    auth = JSON.parse(response.body)['authentication_token']
+    email = 'david@smith.com'
+      delete '/api/sessions', headers: {'X-User-Email' => email, 'X-User-Token' => auth}
+        expect(response).to have_http_status(:ok)
+    end
+  end
 
   #
   #   it "should get new session" do
