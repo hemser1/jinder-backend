@@ -37,18 +37,18 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run:
-            name: Configure Bundler
-            command: |
-              echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-              source $BASH_ENV
-              gem install bundler
+          name: Configure Bundler
+          command: |
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler
       - run:
           name: install dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - run: sudo apt install -y postgresql-client
-
+      - run: sudo apt-get update && sudo apt-get install imagemagick
       - save_cache:
           paths:
             - ./vendor/bundle
@@ -84,14 +84,14 @@ jobs:
           path: /tmp/test-results
           destination: test-results
   deploy:
-      docker:
-        - image: buildpack-deps:trusty
-      steps:
-        - checkout
-        - run:
-            name: Deploy Master to Heroku
-            command: |
-              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
 workflows:
   version: 2
