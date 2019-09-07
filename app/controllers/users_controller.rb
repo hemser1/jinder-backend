@@ -46,12 +46,12 @@ class UsersController < Devise::RegistrationsController
   end
 
   def index
-    @users = Profile.all
+    @users = User.all
     render json: @users
   end
 
   def show
-    @user = Employer.find(params[:id])
+    @user = User.find(params[:id])
     render json: @user
   end
 

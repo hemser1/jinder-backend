@@ -13,6 +13,7 @@ class Profile < ApplicationRecord
       user_id: user_id,
       industry: industry,
       skills: skills,
+      user: user,
       image_photos: images.map do |x|
         {
           url: x.photo.url,
