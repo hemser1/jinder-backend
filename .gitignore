@@ -17,3 +17,4 @@
 
 # Ignore all pictures saved in deployment database
 /public/system/images/
+/public/system/employer_images/

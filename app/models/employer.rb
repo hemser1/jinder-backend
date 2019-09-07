@@ -23,7 +23,7 @@ class Employer < ApplicationRecord
      company_url: company_url,
      accepted_profiles: accepted_profiles,
      rejected_profiles: rejected_profiles,
-     cover_photos: covers.map do |x|
+     image_photos: employer_images.map do |x|
        {
          url: x.photo.url,
          name: x.photo_file_name,

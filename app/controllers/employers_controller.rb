@@ -10,6 +10,11 @@ class EmployersController < Devise::RegistrationsController
     end
   end
 
+  def index
+    @employers = Employer.all
+    render json: @employers
+  end
+
   def update_matches
     @employer = Employer.find_by_sql("
       SELECT employers.id, employers.accepted_profiles, employers.rejected_profiles
