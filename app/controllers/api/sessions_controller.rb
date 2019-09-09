@@ -4,8 +4,10 @@ class Api::SessionsController < ApplicationController
   end
 
   def create
-    user = User.where(email: params[:email]).first
-
+      user = User.where(email: params[:email]).first
+      if user.nil?
+        user = Employer.where(email: params[:email]).first
+      end
     if user&.valid_password?(params[:password])
       render json: user.as_json(only: [:email, :authentication_token, :id]), status: :created
     else
