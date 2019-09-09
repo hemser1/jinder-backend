@@ -10,6 +10,16 @@ class EmployersController < Devise::RegistrationsController
     end
   end
 
+  def index
+    @employers = Employer.all
+    render json: @employers
+  end
+
+  def show
+    @employer = Employer.find(params[:id])
+    render json: @employer
+  end
+
   def update_matches
     @employer = Employer.find_by_sql("
       SELECT employers.id, employers.accepted_profiles, employers.rejected_profiles
@@ -48,6 +58,17 @@ class EmployersController < Devise::RegistrationsController
   private
 
   def employers_params
-    params.require(:employer).permit(:first_name, :last_name, :email, :password, :bio, :company_url)
+    params.require(:employer).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :bio,
+      :company_url,
+      employer_images_attributes: %I[
+        id
+        photo
+      ]
+    )
   end
 end
