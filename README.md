@@ -1,4 +1,4 @@
-# Jinder:tm:
+# [Jinder[](http://jinder-frontend.herokuapp.com/):tm:
 ![Jinder2](https://user-images.githubusercontent.com/42152431/64331487-cbbcc400-cfca-11e9-991f-acc81c28448b.png)
 
 **_Makers Academy Final Project by June2019 Cohort. For this project, we designed a web application using Ruby on Rails, React, RSpec and Jest, PostgreSQL and Active Record. Deployment - Heroku._**
