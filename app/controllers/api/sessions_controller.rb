@@ -16,12 +16,15 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-    current_user&.authentication_token = nil
-    if current_user.save
-      head(:ok)
-    else
-      head(:unauthorized)
-    end
-  end
+    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    render json: {:success => true, id: nil }.to_json, status: :200
+  #   current_user&.authentication_token = nil
+  #   if current_user.save
+  #     head(:ok)
+  #   else
+  #     head(:unauthorized)
+  #   end
+  # end
+end
 
 end

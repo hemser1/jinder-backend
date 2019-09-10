@@ -63,6 +63,7 @@ class EmployersController < Devise::RegistrationsController
       :last_name,
       :email,
       :password,
+      :company_name,
       :bio,
       :company_url,
       employer_images_attributes: %I[
