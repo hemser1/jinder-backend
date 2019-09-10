@@ -27,6 +27,7 @@ class Api::ProfilesController < ApplicationController
           :first_name,
           :last_name,
           :user_id,
+          :user_bio,
           :industry,
           :skills,
           images_attributes: %I[
