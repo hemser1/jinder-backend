@@ -30,6 +30,7 @@ class Api::ProfilesController < ApplicationController
           :user_bio,
           :industry,
           :skills,
+          :personality,
           images_attributes: %I[
             id
             photo
