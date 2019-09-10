@@ -16,15 +16,19 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
-    render json: {:success => true, id: nil }.to_json, status: :200
-  #   current_user&.authentication_token = nil
-  #   if current_user.save
-  #     head(:ok)
-  #   else
-  #     head(:unauthorized)
-  #   end
-  # end
-end
+    user = User.where(email: params[:email])
+    if user.nil?
+      user = Employer.where(email: params[:email])
+    end
+    # @employer = Employer.where(id: )
+    # signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    # render json: {:success => true, id: nil }.to_json, status: :200
+    # current_user&.id = nil
+    # if current_user.save
+    #   head(:ok)
+    # else
+    #   head(:unauthorized)
+    # end
+  end
 
 end
