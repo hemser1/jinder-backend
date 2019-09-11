@@ -12,6 +12,7 @@ gem 'rails', '~> 5.1.7'
 gem 'pg', '>= 0.18', '< 2.0'
 
 # Use Puma as the app server
+gem 'aws-sdk'
 gem 'puma', '~> 3.7'
 gem 'devise'
 gem 'rspec'
