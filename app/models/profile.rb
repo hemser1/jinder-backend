@@ -14,6 +14,7 @@ class Profile < ApplicationRecord
       industry: industry,
       skills: skills,
       user_bio: user_bio,
+      location: loaction,
       personality: personality,
       user: user,
       image_photos: images.map do |x|

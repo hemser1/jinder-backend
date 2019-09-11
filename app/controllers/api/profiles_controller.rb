@@ -29,6 +29,7 @@ class Api::ProfilesController < ApplicationController
           :user_id,
           :user_bio,
           :industry,
+          :location,
           :skills,
           :personality,
           images_attributes: %I[
