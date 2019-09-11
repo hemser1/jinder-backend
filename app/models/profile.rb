@@ -1,5 +1,4 @@
 class Profile < ApplicationRecord
-  # acts_as_token_authenticatable
   belongs_to :user
 
   has_many :images, dependent: :destroy

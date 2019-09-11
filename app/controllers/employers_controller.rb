@@ -63,6 +63,7 @@ class EmployersController < Devise::RegistrationsController
       :last_name,
       :email,
       :password,
+      :location,
       :company_name,
       :bio,
       :company_url,

@@ -1,5 +1,4 @@
 class Employer < ApplicationRecord
-  # acts_as_token_authenticatable
   has_many :employer_images, dependent: :destroy
   accepts_nested_attributes_for :employer_images, allow_destroy: true
 
@@ -8,8 +7,6 @@ class Employer < ApplicationRecord
       email: email,
     }
   end
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -20,6 +17,7 @@ class Employer < ApplicationRecord
      last_name: last_name,
      email: email,
      bio: bio,
+     location: location,
      company_url: company_url,
      accepted_profiles: accepted_profiles,
      rejected_profiles: rejected_profiles,
