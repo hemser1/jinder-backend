@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20190911131223) do
     t.string "authentication_token", limit: 30
     t.text "accepted_profiles", default: [], array: true
     t.text "rejected_profiles", default: [], array: true
-    t.string "company_nane", limit: 45
+    t.string "company_name", limit: 45
     t.string "location"
     t.index ["authentication_token"], name: "index_employers_on_authentication_token", unique: true
     t.index ["email"], name: "index_employers_on_email", unique: true

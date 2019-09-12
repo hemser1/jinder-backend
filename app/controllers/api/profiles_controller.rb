@@ -3,7 +3,7 @@ class Api::ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
 
     if @profile.save
-      render :create
+      render json: @profile, status: :created
     else
       head(:unprocessable_entity)
     end
