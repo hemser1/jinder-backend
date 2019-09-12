@@ -1,42 +1,54 @@
 # frozen_string_literal: true
 
-require 'faker'
 require 'rails_helper'
 
-RSpec.describe Api::SessionsController, type: :request do
-  before do
-    post '/users', params: { "user": { :email => "david@smith.com",
-          :password => "123456", } }
-  end
-  describe 'POST #create' do
+RSpec.describe Api::SessionsController < ApplicationController, type: :request do
+before do
+  post '/users', params: { "user": { :email => "david@smith.com",
+        :password => "123456", } }
+  post '/employers', params: {
+    "employer": {
+      :first_name => "Alan",
+      :last_name => "Sugar",
+      :email => "alan@sugar.com",
+      :password => "123456",
+      :location => "London",
+      :bio => "I run Amstrad",
+      :company_url => "www.alan.com"
+       }}
+end
+
+  describe '#create' do
     it 'returns 200 created' do
+      post '/api/sessions', params: { :email => "david@smith.com",
+            :password => "123456", }
       expect(response).to have_http_status(:created)
     end
-    it 'returns email address' do
-      expect(JSON.parse(response.body)['email']). to eq ('david@smith.com')
+    it 'returns employer depending on email' do
+      post '/api/sessions', params: { :email => "alan@sugar.com",
+            :password => "123456", }
+      expect(JSON.parse(response.body)['email']). to eq ('alan@sugar.com')
     end
-    it 'returns auth token' do
-      expect(JSON.parse(response.body)['authentication_token']).to be_truthy
+    it 'throws unprocessable_entity if password not correct' do
+      post '/api/sessions', params: { :email => "david@smith.com",
+            :password => "12345", }
+            expect(response).to have_http_status(:unauthorized)
+    end
+    it 'created new session if password correct' do
+      post '/api/sessions', params: { :email => "david@smith.com",
+            :password => "123456", }
+            expect(response).to have_http_status(:created)
     end
   end
-  # describe 'GET #show' do
-  #   it 'returns all users' do
-  #     expect(response).to have_http_status(:ok)
-  #   end
-  # end
   describe 'DELETE #destroy' do
-    it 'destroys sessions!' do
-    auth = JSON.parse(response.body)['authentication_token']
-    email = 'david@smith.com'
-      delete '/api/sessions', headers: {'X-User-Email' => email, 'X-User-Token' => auth}
-        expect(response).to have_http_status(:ok)
+    it 'destroys user sessions!' do
+      delete '/api/sessions', params: { email: "david@smith.com"}
+        expect(response).to have_http_status(:no_content)
+    end
+    it 'destroys employer sessions!' do
+      delete '/api/sessions', params: { email: "alan@sugar.com"}
+        expect(response).to have_http_status(:no_content)
     end
   end
 
-  #
-  #   it "should get new session" do
-  #     get '/login'
-  #     assert_response :success
-  #   end
-  #
 end

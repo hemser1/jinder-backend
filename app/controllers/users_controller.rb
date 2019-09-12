@@ -2,11 +2,11 @@ class UsersController < Devise::RegistrationsController
 
   def show_matches
     @users = User.find_by_sql("
-      select *, e.id from employers,
-      (select unnest(users.accepted_employers)
+      select *, e.id
+      from employers, (select unnest(users.accepted_employers)
       as employer_id, users.id from users) e
       where employers.id=e.employer_id::INTEGER")
-        render json: @users.as_json
+        render json: @users.as_json(only: [:email])
   end
 
   def update_matches

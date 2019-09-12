@@ -12,7 +12,7 @@ class EmployersController < Devise::RegistrationsController
 
   def index
     @employers = Employer.all
-    render json: @employers
+    render json: @employers.as_json(include: [:employer_images])
   end
 
   def show
@@ -43,7 +43,7 @@ class EmployersController < Devise::RegistrationsController
       from users, (select unnest(employers.accepted_profiles)
       as user_id , employers.id from employers) e
       where users.id=e.user_id::INTEGER")
-        render json: @employers.as_json
+        render json: @employers.as_json(only: [:email])
   end
 
   def destroy
