@@ -19,6 +19,7 @@ class Employer < ApplicationRecord
      bio: bio,
      location: location,
      company_url: company_url,
+     company_name: company_name,
      accepted_profiles: accepted_profiles,
      rejected_profiles: rejected_profiles,
      image_photos: employer_images.map do |x|
