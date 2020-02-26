@@ -13,7 +13,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 
 # Use Puma as the app server
 gem 'aws-sdk'
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12'
 gem 'devise'
 gem 'rspec'
 gem 'hpricot'
